@@ -31,7 +31,7 @@ with open(file) as filehandler: #Abrir archivo
             line = line.rstrip().replace("|", "; ") #Corta el trailing y remplaza | con ;
             line_elements = re.sub(r"\s+", " ", line).replace(' ', '\t').split('\t') #Los tbl tienen espacios en blanco. Se eliminan, se deja uno para reemplazar por tabsy se separa por tabs. Se crea una lista
             if float(line_elements[13]) > bitscore: #Si bitscore es mayor que el declarado en las opciones.
-                new_line = line_elements[2] + "\t" + method + "\t" + "RSS" + "\t" + line_elements[6] + "\t" + line_elements[7] + "\t.\t.\t.\t" + line_elements[0] #Reordena la linea como gff. Se crea un string
+                new_line = line_elements[2] + "\t" + method + "\t" + "RSS" + "\t" + line_elements[6] + "\t" + line_elements[7] + "\t.\t.\t.\t" + "Query=" + line_elements[0] #Reordena la linea como gff. Se crea un string
                 new_line = new_line.split("\t") #Partir el string por tabulacion
                 if new_line[4] > new_line[3]: #Si end es mayor que start
                     new_line[6] = "+" #Cambiar sexta posicion a +
